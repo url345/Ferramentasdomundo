@@ -55,7 +55,7 @@ footer{border-top:1px solid var(--line);margin-top:30px;padding:20px 0;color:var
 <div class="price" id="unit">R$ 29,90</div>
 <div class="pix">no Pix · por unidade</div>
 <div class="qty"><button id="m" aria-label="Diminuir">−</button><span id="q">1</span><button id="a" aria-label="Aumentar">+</button></div>
-<div class="box">Total: <b id="tot">R$ 29,90</b><br><span id="sh">Frete calculado no checkout. Leve 2 e ganhe frete grátis.</span></div>
+<div class="box">Total: <b id="tot">R$ 29,90</b><br><span id="sh">Frete calculado no checkout. Leve 2 e ganhe frete grátis.</span><br>🚚 Entrega estimada: <b>7 a 15 dias</b></div>
 <button class="btn" id="buy">Comprar agora</button>
 <div id="msg">Pedido de <b id="mq">1</b> unidade(s) registrado. Em breve você será levado ao pagamento via Pix.</div>
 <ul class="ben" style="margin-top:20px">
@@ -73,7 +73,7 @@ footer{border-top:1px solid var(--line);margin-top:30px;padding:20px 0;color:var
 <div class="c"><b>Pix simples</b><br>Pagamento por Pix com QR Code ou copia e cola.</div>
 </div>
 <h2>Dúvidas frequentes</h2>
-<details><summary>Quanto tempo leva a entrega?</summary><p>O prazo é informado no checkout após você digitar o CEP. O envio é feito diretamente pelo fornecedor.</p></details>
+<details><summary>Quanto tempo leva a entrega?</summary><p>A entrega leva de 7 a 15 dias. O envio é feito diretamente pelo fornecedor.</p></details>
 <details><summary>Como pago?</summary><p>Por Pix. Após a confirmação do pagamento, seu pedido segue para envio.</p></details>
 <details><summary>Como funciona o frete grátis?</summary><p>O frete é calculado pelo seu CEP no checkout. Levando 2 unidades, o frete é por nossa conta.</p></details>
 <details><summary>Posso trocar ou devolver?</summary><p>Sim. Fale com a gente pelos canais de atendimento da loja e analisamos seu caso.</p></details>
@@ -88,9 +88,9 @@ footer{border-top:1px solid var(--line);margin-top:30px;padding:20px 0;color:var
 <button class="btn" onclick="ckGo()">Finalizar pedido com Pix</button>
 <div class="trust"><span>◈ Pagamento por Pix</span><span>📦 Envio direto do fornecedor</span><span>🚚 Frete grátis a partir de 2 un.</span></div></div>
 <aside class="sum sec"><h3>Resumo do pedido</h3><div class="it"><img id="cth" alt=""><div><b>Kit de Ferramentas com Catraca e Soquetes – 46 Peças</b><div class="mini"><button onclick="if(n>1){n--;up();ckSum()}">−</button><b id="cq">1</b><button onclick="n++;up();ckSum()">+</button></div></div></div>
-<div class="row"><span>Subtotal</span><span id="csub"></span></div><div class="row"><span>Frete</span><span id="cfr"></span></div>
+<div class="row"><span>Subtotal</span><span id="csub"></span></div><div class="row"><span>Frete</span><span id="cfr"></span></div><div class="row"><span>Entrega estimada</span><b id="cet">—</b></div>
 <div class="row tt"><span>Total</span><b id="ctot"></b></div><div id="cnote" style="color:var(--mut);font-size:13px;margin-top:6px"></div></aside></div>
-<div class="ckg" id="ckd" hidden style="max-width:560px"><div class="sec" style="text-align:center"><div style="font-size:44px;color:var(--y)">✓</div><h2 style="margin:6px 0">Pedido recebido</h2><p id="dmsg" style="color:var(--mut)"></p><button class="btn alt" onclick="closeCk()">Voltar à loja</button></div></div></div>
+<div class="ckg" id="ckd" hidden style="max-width:560px"><div class="sec" style="text-align:center"><h2 style="margin:0 0 6px">Pague com Pix</h2><p id="dmsg" style="color:var(--mut);margin:0 0 14px"></p><div id="qrw" style="background:#fff;border-radius:12px;padding:10px;display:inline-block;margin-bottom:12px" hidden><img id="qri" alt="QR Code Pix" style="width:220px;height:220px;display:block"></div><textarea id="pxc" readonly rows="4" style="width:100%;background:#0e0e0e;color:var(--tx);border:1px solid var(--line);border-radius:10px;padding:12px;font-size:13px"></textarea><button class="btn" id="cpb" onclick="cpPix()" style="margin-top:10px">Copiar código Pix</button><pre id="raw" style="text-align:left;white-space:pre-wrap;font-size:11px;color:var(--mut);max-height:160px;overflow:auto" hidden></pre><button class="btn alt" onclick="closeCk()" style="margin-top:10px">Voltar à loja</button></div></div></div>
 <script>
 var $=function(i){return document.getElementById(i)},FRETE=7.5;
 var P=29.90,n=1;function f(v){return "R$ "+v.toFixed(2).replace(".",",")}
@@ -103,14 +103,28 @@ function cpfOk(c){c=dg(c);if(c.length!=11||/^(\d)\1+$/.test(c))return false;for(
 var V={nome:function(v){return /\S+\s+\S+/.test(v.trim())||"Informe nome e sobrenome"},email:function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim())||"E-mail inválido"},tel:function(v){var l=dg(v).length;return l==10||l==11||"Informe DDD e número"},cpf:function(v){return cpfOk(v)||"CPF inválido"},cep:function(v){return dg(v).length==8||"CEP inválido"},num:function(v){return v.trim()!==""||"Informe o número"},rua:function(v){return v.trim().length>2||"Informe o endereço"},bairro:function(v){return v.trim().length>1||"Informe o bairro"},cid:function(v){return v.trim().length>1||"Informe a cidade"},uf:function(v){return v.length==2||"UF"}};
 function msk(t,v){var d=dg(v);if(t=="uf")return v.toUpperCase().replace(/[^A-Z]/g,"").slice(0,2);if(t=="cep")return d.slice(0,8).replace(/(\d{5})(\d)/,"$1-$2");if(t=="cpf")return d.slice(0,11).replace(/(\d{3})(\d)/,"$1.$2").replace(/(\d{3})(\d)/,"$1.$2").replace(/(\d{3})(\d{1,2})$/,"$1-$2");d=d.slice(0,11);if(d.length<3)return d;return(d.length>10?d.replace(/(\d{2})(\d{5})(\d{0,4})/,"($1) $2-$3"):d.replace(/(\d{2})(\d{0,4})(\d{0,4})/,"($1) $2-$3")).replace(/-$/,"")}
 function chk(f){var d=$("f_"+f[1]),r=V[f[1]]?V[f[1]]($(f[1]).value):true;d.classList.toggle("bad",r!==true);d.querySelector("small").textContent=r===true?"":r;return r===true}
-var built=false;
+var API_URL="/api/charge",built=false;
 function ckBuild(){if(built)return;built=true;FL.forEach(function(f){var d=document.createElement("div");d.className="f "+f[3];d.id="f_"+f[1];d.innerHTML='<label for="'+f[1]+'">'+f[2]+'</label><input id="'+f[1]+'" autocomplete="'+f[4]+'" inputmode="'+f[5]+'"><small></small>';$(f[0]).appendChild(d);var i=d.querySelector("input");i.oninput=function(){if(f[6])i.value=msk(f[6],i.value);d.classList.remove("bad");if(f[1]=="cep")cepGo(i.value)};i.onblur=function(){if(i.value)chk(f)}})}
 var frS=0,tmr;function cepGo(v){clearTimeout(tmr);if(dg(v).length==8){frS=1;ckSum();tmr=setTimeout(function(){frS=2;ckSum()},1800)}else{frS=0;ckSum()}}
-function ckSum(){var s=P*n,fr=frS==0?"Informe o CEP":frS==1?'<span class="spn"></span>Calculando rota de entrega…':(n>=2?"Grátis":f(FRETE));$("cq").textContent=n;$("csub").textContent=f(s);$("cfr").innerHTML=fr;$("ctot").textContent=f(s+(frS==2&&n<2?FRETE:0));$("cnote").textContent=n<2?"Leve 2 unidades e ganhe frete grátis.":"Frete grátis aplicado ✓"}
+function ckSum(){var s=P*n,fr=frS==0?"Informe o CEP":frS==1?'<span class="spn"></span>Calculando rota de entrega…':(n>=2?"Grátis":f(FRETE));$("cq").textContent=n;$("cet").textContent=frS==2?"7 a 15 dias":"—";$("csub").textContent=f(s);$("cfr").innerHTML=fr;$("ctot").textContent=f(s+(frS==2&&n<2?FRETE:0));$("cnote").textContent=n<2?"Leve 2 unidades e ganhe frete grátis.":"Frete grátis aplicado ✓"}
 function openCk(){ckBuild();$("cth").src=document.querySelector("#pic img").src;ckSum();$("ckm").hidden=false;$("ckd").hidden=true;$("ck").hidden=false;$("ck").scrollTop=0;document.body.style.overflow="hidden"}
 function closeCk(){$("ck").hidden=true;document.body.style.overflow=""}
 function ckGo(){var first=null;FL.forEach(function(x){if(!chk(x)&&!first)first=x[1]});if(first){$(first).focus();return}
-$("dmsg").textContent="Obrigado, "+$("nome").value.trim().split(" ")[0]+". Seu pedido nº FDM"+String(Date.now()).slice(-6)+" ("+n+" un.) foi registrado em modo demonstração: o Pix ainda não está conectado, então nenhum QR Code foi gerado e nenhum valor foi cobrado.";$("ckm").hidden=true;$("ckd").hidden=false;$("ck").scrollTop=0}
+var btn=document.querySelector("#ckm .btn"),old=btn.textContent;btn.disabled=true;btn.textContent="Gerando Pix…";
+var amt=Math.round((P*n+(n<2?FRETE:0))*100)/100,ped="FDM"+String(Date.now()).slice(-6);
+fetch(API_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({amount:amt,description:"Pedido "+ped+" - "+$("nome").value.trim()+" - Kit 46 pecas x"+n})})
+.then(function(r){return r.json().then(function(d){if(!r.ok)throw d;return d})})
+.then(function(d){showPix(d,ped,amt)})
+.catch(function(e){alert("Não foi possível gerar o Pix agora. Tente novamente em instantes.");console.error(e)})
+.then(function(){btn.disabled=false;btn.textContent=old})}
+function strs(o,a,dp){if(typeof o=="string")a.push(o);else if(o&&typeof o=="object"&&dp<5)for(var k in o)strs(o[k],a,dp+1);return a}
+function showPix(d,ped,amt){var a=strs(d,[],0),code=a.filter(function(s){return /^0002\d\d/.test(s)})[0]||"",im=a.filter(function(s){return /^(data:image|iVBOR|https?:\/\/\S*(qr|png|svg|image))/i.test(s)})[0]||"";
+if(im.indexOf("iVBOR")==0)im="data:image/png;base64,"+im;
+$("dmsg").textContent="Pedido "+ped+" · "+f(amt)+". Abra o app do seu banco, escolha Pix e pague com QR Code ou copia e cola.";
+$("qrw").hidden=!im;if(im)$("qri").src=im;$("pxc").value=code;$("pxc").hidden=!code;$("cpb").hidden=!code;
+$("raw").hidden=!!(code||im);$("raw").textContent=(code||im)?"":"Cobrança criada, mas não identifiquei o código Pix na resposta:\n"+JSON.stringify(d,null,2);
+$("ckm").hidden=true;$("ckd").hidden=false;$("ck").scrollTop=0}
+function cpPix(){var t=$("pxc");t.select();try{navigator.clipboard.writeText(t.value)}catch(e){document.execCommand("copy")}$("cpb").textContent="Código copiado ✓"}
 
 (function(){var pic=document.getElementById("pic"),dots=document.getElementById("dots"),first=pic.querySelector("img");
 function mk(){try{var k=first.naturalWidth/720;[].forEach(function(d){var c=document.createElement("canvas");c.width=c.height=600;c.getContext("2d").drawImage(first,d[0]*k,d[1]*k,d[2]*k,d[2]*k,0,0,600,600);var im=new Image();im.src=c.toDataURL("image/jpeg",.85);im.alt="Detalhe do kit de 46 peças";pic.appendChild(im)})}catch(e){}
