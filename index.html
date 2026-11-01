@@ -52,10 +52,10 @@ footer{border-top:1px solid var(--line);margin-top:30px;padding:20px 0;color:var
 <h1>Kit de Ferramentas com Catraca e Soquetes – 46 Peças</h1>
 <p class="sub">Praticidade, organização e eficiência para seus reparos.</p>
 <div class="old">De R$ 39,90</div>
-<div class="price" id="unit">R$ 29,90</div>
+<div class="price" id="unit">R$ 10,90</div>
 <div class="pix">no Pix · por unidade</div>
 <div class="qty"><button id="m" aria-label="Diminuir">−</button><span id="q">1</span><button id="a" aria-label="Aumentar">+</button></div>
-<div class="box">Total: <b id="tot">R$ 29,90</b><br><span id="sh">Frete calculado no checkout. Leve 2 e ganhe frete grátis.</span><br>🚚 Entrega estimada: <b>7 a 15 dias</b></div>
+<div class="box">Total: <b id="tot">R$ 10,90</b><br><span id="sh">Frete calculado no checkout. Leve 2 e ganhe frete grátis.</span><br>🚚 Entrega estimada: <b>7 a 15 dias</b></div>
 <button class="btn" id="buy">Comprar agora</button>
 <div id="msg">Pedido de <b id="mq">1</b> unidade(s) registrado. Em breve você será levado ao pagamento via Pix.</div>
 <ul class="ben" style="margin-top:20px">
@@ -79,7 +79,7 @@ footer{border-top:1px solid var(--line);margin-top:30px;padding:20px 0;color:var
 <details><summary>Posso trocar ou devolver?</summary><p>Sim. Fale com a gente pelos canais de atendimento da loja e analisamos seu caso.</p></details>
 </main>
 <footer><div class="wrap">© Ferramentas do Mundo · Ferramentas para quem faz acontecer.</div></footer>
-<div class="bar"><div class="p">Total<b id="tot2">R$ 29,90</b></div><button class="btn" id="buy2">Comprar agora</button></div>
+<div class="bar"><div class="p">Total<b id="tot2">R$ 10,90</b></div><button class="btn" id="buy2">Comprar agora</button></div>
 <div id="ck" hidden><div class="ckh"><button onclick="closeCk()">‹ Voltar</button><div class="logo">FERRAMENTAS <b>DO MUNDO</b></div><span style="color:var(--mut);font-size:13px">🔒 Seguro</span></div>
 <div class="ckg" id="ckm"><div>
 <div class="sec"><h3><i>1</i>Seus dados</h3><div class="fg" id="s1"></div></div>
@@ -93,7 +93,7 @@ footer{border-top:1px solid var(--line);margin-top:30px;padding:20px 0;color:var
 <div class="ckg" id="ckd" hidden style="max-width:560px"><div class="sec" style="text-align:center"><h2 style="margin:0 0 6px">Pague com Pix</h2><p id="dmsg" style="color:var(--mut);margin:0 0 14px"></p><div id="qrw" style="background:#fff;border-radius:12px;padding:10px;display:inline-block;margin-bottom:12px" hidden><img id="qri" alt="QR Code Pix" style="width:220px;height:220px;display:block"></div><div style="display:flex;gap:8px;align-items:center"><input id="pxc" readonly style="flex:1;min-width:0;background:#0e0e0e;color:var(--tx);border:1px solid var(--line);border-radius:10px;padding:13px;font-size:14px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden"><button class="btn" id="cpb" onclick="cpPix()" style="width:auto;padding:13px 18px;flex:none">Copiar</button></div><pre id="raw" style="text-align:left;white-space:pre-wrap;font-size:11px;color:var(--mut);max-height:160px;overflow:auto" hidden></pre><button class="btn alt" onclick="closeCk()" style="margin-top:10px">Voltar à loja</button></div></div></div>
 <script>
 var $=function(i){return document.getElementById(i)},FRETE=7.5;
-var P=29.90,n=1;function f(v){return "R$ "+v.toFixed(2).replace(".",",")}
+var P=10.90,n=1;function f(v){return "R$ "+v.toFixed(2).replace(".",",")}
 function up(){var t=P*n;["tot","tot2"].forEach(function(i){document.getElementById(i).textContent=f(t)});document.getElementById("q").textContent=n;document.getElementById("sh").textContent=n>=2?"Frete grátis aplicado ✓":"Frete calculado no checkout. Leve 2 e ganhe frete grátis.";document.getElementById("sh").className=n>=2?"ship":""}
 document.getElementById("a").onclick=function(){n++;up()};document.getElementById("m").onclick=function(){if(n>1){n--;up()}};
 function go(){openCk()}
